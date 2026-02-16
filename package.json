@@ -1,0 +1,29 @@
+{
+  "name": "gen-agent",
+  "version": "0.1.0",
+  "description": "A minimal reproduction of a production-grade AI Agent architecture for learning system-level design",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "gen-agent": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli.ts",
+    "start": "node dist/cli.js",
+    "chat": "tsx src/cli.ts chat",
+    "example": "tsx examples/basic.ts"
+  },
+  "dependencies": {
+    "@mariozechner/pi-ai": "0.50.7",
+    "dotenv": "^17.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

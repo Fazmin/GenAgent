@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.gen-agent/
+*.log
+.DS_Store
+.env

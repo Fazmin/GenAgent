@@ -1,0 +1,22 @@
+# Scratchpad
+
+## Current Task
+Fix: ENOENT error on session lock file when sessions directory doesn't exist
+
+### Root Cause
+In `session.ts` `persistEntry()`, `acquireSessionWriteLock()` is called before the sessions
+directory is created with `fs.mkdir()`. The lock file tries to be created via `fs.open(lockPath, "wx")`
+but the parent directory `.gen-agent/sessions/` doesn't exist yet, causing ENOENT.
+
+### Fix
+[X] Move `fs.mkdir(this.baseDir, { recursive: true })` before `acquireSessionWriteLock()` call
+
+## Lessons
+- Avoid em dashes in text descriptions
+- Use "npx shadcn@latest add <component-name>" for shadcn components
+- PowerShell does not support && for chaining commands, use separate shell calls
+- Internal type names (MiniAgentEvent, MiniAgentResult, createMiniAgentStream) were kept to avoid breaking API
+- Environment variables renamed: OPENCLAW_MINI_PROVIDER -> GEN_AGENT_PROVIDER, OPENCLAW_MINI_AGENT_ID -> GEN_AGENT_AGENT_ID
+- Default directories renamed: .openclaw-mini -> .gen-agent, .mini-agent -> .gen-agent
+- pi-ai getModel() returns undefined if modelId is undefined or not found in registry; always provide a fallback
+- Session lock file requires the parent directory to exist before fs.open with "wx" flag
