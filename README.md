@@ -309,6 +309,31 @@ console.log(`${result.turns} turns, ${result.toolCalls} tool calls`);
 unsubscribe();
 ```
 
+## oneAgent - Chat UI
+
+A fully functional chat agent web interface is included in the `oneagent/` directory. It provides:
+
+- Real-time streaming chat with SSE
+- Multi-provider support (Anthropic, OpenAI, Google, Groq)
+- Visual tool execution display
+- Conversation management with SQLite persistence
+- Settings UI for provider, model, and API key configuration
+- Responsive design with dark mode
+
+To run it:
+
+```bash
+# Build the GenAgent library first
+npm run build
+
+# Then start the chat UI
+cd oneagent
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to start chatting. See `oneagent/README.md` for full documentation.
+
 ## Suggested Learning Path
 
 1. **Start with the Core Layer**: `agent-loop.ts` > `agent.ts` > `agent-events.ts` > `session.ts` > `context/`

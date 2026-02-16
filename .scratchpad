@@ -1,15 +1,20 @@
 # Scratchpad
 
 ## Current Task
-Fix: ENOENT error on session lock file when sessions directory doesn't exist
+Build "oneAgent" - a Next.js + shadcn + SQLite chat agent UI
 
-### Root Cause
-In `session.ts` `persistEntry()`, `acquireSessionWriteLock()` is called before the sessions
-directory is created with `fs.mkdir()`. The lock file tries to be created via `fs.open(lockPath, "wx")`
-but the parent directory `.gen-agent/sessions/` doesn't exist yet, causing ENOENT.
-
-### Fix
-[X] Move `fs.mkdir(this.baseDir, { recursive: true })` before `acquireSessionWriteLock()` call
+### Progress
+[X] 1. Initialize Next.js app in /oneagent with TypeScript
+[X] 2. Install shadcn UI + required components
+[X] 3. Install better-sqlite3 for SQLite
+[X] 4. Set up SQLite database schema
+[X] 5. Create database utility layer
+[X] 6. Create API routes (chat, conversations, messages, settings)
+[X] 7. Build chat UI components
+[X] 8. Wire up GenAgent integration with SSE streaming
+[X] 9. Polish CSS (dark mode, typography, scrollbar)
+[X] 10. Update README files
+[ ] 11. Final verification
 
 ## Lessons
 - Avoid em dashes in text descriptions
@@ -20,3 +25,10 @@ but the parent directory `.gen-agent/sessions/` doesn't exist yet, causing ENOEN
 - Default directories renamed: .openclaw-mini -> .gen-agent, .mini-agent -> .gen-agent
 - pi-ai getModel() returns undefined if modelId is undefined or not found in registry; always provide a fallback
 - Session lock file requires the parent directory to exist before fs.open with "wx" flag
+- npm create-next-app does not allow capital letters in project names
+- shadcn's useIsMobile hook is named useIsMobile, not useMobile
+- Turbopack cannot resolve file: dependencies - use createRequire + computed string to bypass static analysis
+- Turbopack resolveAlias does not support Windows paths ("windows imports not implemented yet")
+- For gen-agent package.json, main should be dist/src/index.js (not dist/index.js) when rootDir is "."
+- Tailwind CSS v4 uses @plugin directive for plugins instead of config file
+- In PowerShell, curl is an alias for Invoke-WebRequest, not the real curl
