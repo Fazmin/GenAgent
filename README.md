@@ -1,10 +1,8 @@
 # GenAgent
 
-**A blueprint for how AI Agent systems actually work under the hood.**
+**A blueprint for how AI Agent systems actually work under the hood**
 
-> "An AI without memory is just a function mapping. An AI with memory and proactive activation is an evolving living system."
-
-## The Story Behind This
+## Inspiration
 
 Over the past year, I have been building multiple projects that involve AI agents. Across all of them, I kept running into the same questions: How should an agent manage its conversation history when the context window fills up? How does it decide when to use a tool versus just respond with text? How do you make an agent remember things between sessions, or even act on its own without waiting for a prompt?
 
@@ -12,7 +10,7 @@ Every tutorial I found online only showed the basics, the simple loop where you 
 
 So I started sketching out a blueprint for how a proper agent system should be structured. Not just the loop, but everything around it: session persistence, context management, memory, skills, concurrency control, and proactive behavior. Eventually that blueprint turned into this project. GenAgent is the result of distilling those ideas into a minimal but complete implementation that captures how these systems actually perform at a deeper level.
 
-## What Is This, Simply Put?
+## Some context
 
 Think of an AI agent as a smart assistant that can not only talk to you, but also take actions: read files, run commands, search the web, and remember things you told it last week.
 
